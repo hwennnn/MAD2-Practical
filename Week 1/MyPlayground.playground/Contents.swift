@@ -73,13 +73,13 @@ func findMin(n: [Int])->Int{
 print(findMin(n: arr))
 
 // Exercise 7
-func findAverage(n: [Int])->Int{
+func findAverage(n: [Int])->Double{
     var s = 0;
     for val in n{
         s += val
     }
-    
-    return s / n.count
+
+    return Double(s) / Double(n.count)
 }
 
 print(findAverage(n: arr))
