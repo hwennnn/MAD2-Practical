@@ -12,11 +12,12 @@ class Friend{
     var lastName: String = ""
     var age: Int = 0
     
-    public var description: String { return "\(firstName) \(lastName)'s age is \(age)" }
+    var description: String = ""
     
-    init(firstname:String, lastname:String, age:Int){
+    init(firstname:String, lastname:String, age:Int, description:String){
         self.firstName = firstname
         self.lastName = lastname
         self.age = age
+        self.description = description
     }
 }
