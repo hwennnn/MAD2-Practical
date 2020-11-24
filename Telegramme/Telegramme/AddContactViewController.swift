@@ -16,8 +16,10 @@ class AddContactViewController : UIViewController{
     @IBOutlet weak var updateBtn: UIButton!
     @IBOutlet weak var backBtn: UIButton!
     
+    let contactController = ContactController()
     
     var contactIndex:Int?
+    var originalContact:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,7 @@ class AddContactViewController : UIViewController{
             firstNameFld.text = contact.firstName
             lastNameFld.text = contact.lastName
             mobileFld.text = contact.mobileNo
+            originalContact = contact.mobileNo
             
             updateBtn.isHidden = false
             backBtn.isHidden = false
@@ -47,9 +50,11 @@ class AddContactViewController : UIViewController{
     @IBAction func createBtn(_ sender: Any) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let contact = Contact(firstNameFld.text!, lastNameFld.text!, mobileFld.text!)
-        appDelegate.contactList.append(contact)
-        print(String(appDelegate.contactList.count))
-        
+        contactController.AddContact(newContact: contact)
+            
+        // update the contact list after add a new contact
+        appDelegate.contactList = contactController.retrieveAllContact()
+    
         firstNameFld.text = ""
         lastNameFld.text = ""
         mobileFld.text = ""
@@ -58,7 +63,11 @@ class AddContactViewController : UIViewController{
     @IBAction func updateBtn(_ sender: Any) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let contact = Contact(firstNameFld.text!, lastNameFld.text!, mobileFld.text!)
-        appDelegate.contactList[contactIndex!] = contact
+        contactController.updateContact(mobileno: originalContact!, newContact: contact)
+        
+        // update the contact list after update a contact
+        appDelegate.contactList = contactController.retrieveAllContact()
+        
         self.dismiss(animated: true, completion: nil)
     }
 

@@ -11,6 +11,7 @@ import UIKit
 class ShowContactViewController : UITableViewController{
     
     var appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let contactController = ContactController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,11 +67,14 @@ class ShowContactViewController : UITableViewController{
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
-            if indexPath.section == 0 {
-                self.appDelegate.contactList.remove(at: indexPath.row) }
-            else {
-                self.appDelegate.contactList.remove(at: indexPath.row); tableView.deleteRows(at: [indexPath as IndexPath],with: UITableView.RowAnimation.fade)
-            }
+            
+            let contact = self.appDelegate.contactList[indexPath.row]
+            
+            contactController.deleteContact(mobileno: contact.mobileNo)
+            
+            // update the contact list after remove a contact
+            appDelegate.contactList = contactController.retrieveAllContact()
+            
         } else if editingStyle == UITableViewCell.EditingStyle.insert {
          }
         
