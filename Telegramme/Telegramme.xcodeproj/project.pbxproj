@@ -55,6 +55,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8AD389BE256F5DA30011308D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8A4909EB255CC2D30047F21E /* Contact.swift */,
+				8AD389B8256F49930011308D /* Friend.swift */,
+				8AD389BB256F4A0C0011308D /* Message.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8AD389BF256F5DC30011308D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8AEAC73A255C294100878D00 /* ViewController.swift */,
+				8A3E7399255C30F30044EEFA /* AddContactViewController.swift */,
+				8AD389B5256F49450011308D /* FriendController.swift */,
+				8A4909F2255CC6E60047F21E /* ShowContactViewController.swift */,
+				8ABB2649256CA48600095982 /* ContactController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8AD389C0256F5DFA0011308D /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				8A3E7396255C2E150044EEFA /* Content.storyboard */,
+				8AEAC73C255C294100878D00 /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 		8AEAC72A255C294100878D00 = {
 			isa = PBXGroup;
 			children = (
@@ -74,22 +105,15 @@
 		8AEAC735255C294100878D00 /* Telegramme */ = {
 			isa = PBXGroup;
 			children = (
+				8AD389C0256F5DFA0011308D /* Storyboard */,
+				8AD389BF256F5DC30011308D /* Controller */,
+				8AD389BE256F5DA30011308D /* Model */,
 				8AEAC736255C294100878D00 /* AppDelegate.swift */,
-				8ABB2649256CA48600095982 /* ContactController.swift */,
 				8AEAC738255C294100878D00 /* SceneDelegate.swift */,
-				8AEAC73A255C294100878D00 /* ViewController.swift */,
-				8AEAC73C255C294100878D00 /* Main.storyboard */,
-				8A3E7396255C2E150044EEFA /* Content.storyboard */,
-				8A4909EB255CC2D30047F21E /* Contact.swift */,
-				8A3E7399255C30F30044EEFA /* AddContactViewController.swift */,
 				8ABB2645256CA05000095982 /* Telegramme.xcdatamodeld */,
-				8AD389BB256F4A0C0011308D /* Message.swift */,
-				8AD389B5256F49450011308D /* FriendController.swift */,
-				8AD389B8256F49930011308D /* Friend.swift */,
 				8AEAC73F255C294300878D00 /* Assets.xcassets */,
 				8AEAC741255C294300878D00 /* LaunchScreen.storyboard */,
 				8AEAC744255C294300878D00 /* Info.plist */,
-				8A4909F2255CC6E60047F21E /* ShowContactViewController.swift */,
 			);
 			path = Telegramme;
 			sourceTree = "<group>";
