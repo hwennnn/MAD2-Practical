@@ -8,17 +8,18 @@
     <entity name="CDFriend" representedClassName="CDFriend" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="profileImageName" optional="YES" attributeType="String"/>
-        <relationship name="lastMessage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDMessage" inverseName="friend" inverseEntity="CDMessage"/>
+        <relationship name="lastMessage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDMessage"/>
+        <relationship name="message" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDMessage" inverseName="friend" inverseEntity="CDMessage"/>
     </entity>
     <entity name="CDMessage" representedClassName="CDMessage" syncable="YES" codeGenerationType="class">
-        <attribute name="data" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="isSender" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="text" optional="YES" attributeType="String"/>
-        <relationship name="friend" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDFriend" inverseName="lastMessage" inverseEntity="CDFriend"/>
+        <relationship name="friend" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDFriend" inverseName="message" inverseEntity="CDFriend"/>
     </entity>
     <elements>
         <element name="CDContact" positionX="-63" positionY="-18" width="128" height="74"/>
-        <element name="CDFriend" positionX="-54" positionY="18" width="128" height="74"/>
-        <element name="CDMessage" positionX="-36" positionY="36" width="128" height="89"/>
+        <element name="CDFriend" positionX="-9.422119140625" positionY="173.3311462402344" width="128" height="103"/>
+        <element name="CDMessage" positionX="-266.1075439453125" positionY="90.03363037109375" width="128" height="103"/>
     </elements>
 </model>

@@ -13,6 +13,9 @@
 		8A4909F3255CC6E60047F21E /* ShowContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4909F2255CC6E60047F21E /* ShowContactViewController.swift */; };
 		8ABB2647256CA05000095982 /* Telegramme.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB2645256CA05000095982 /* Telegramme.xcdatamodeld */; };
 		8ABB264A256CA48600095982 /* ContactController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB2649256CA48600095982 /* ContactController.swift */; };
+		8AD389B6256F49450011308D /* FriendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD389B5256F49450011308D /* FriendController.swift */; };
+		8AD389B9256F49930011308D /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD389B8256F49930011308D /* Friend.swift */; };
+		8AD389BC256F4A0C0011308D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD389BB256F4A0C0011308D /* Message.swift */; };
 		8AEAC737255C294100878D00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEAC736255C294100878D00 /* AppDelegate.swift */; };
 		8AEAC739255C294100878D00 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEAC738255C294100878D00 /* SceneDelegate.swift */; };
 		8AEAC73B255C294100878D00 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEAC73A255C294100878D00 /* ViewController.swift */; };
@@ -28,6 +31,9 @@
 		8A4909F2255CC6E60047F21E /* ShowContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowContactViewController.swift; sourceTree = "<group>"; };
 		8ABB2646256CA05000095982 /* Telegramme.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Telegramme.xcdatamodel; sourceTree = "<group>"; };
 		8ABB2649256CA48600095982 /* ContactController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactController.swift; sourceTree = "<group>"; };
+		8AD389B5256F49450011308D /* FriendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendController.swift; sourceTree = "<group>"; };
+		8AD389B8256F49930011308D /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		8AD389BB256F4A0C0011308D /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		8AEAC733255C294100878D00 /* Telegramme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Telegramme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AEAC736255C294100878D00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AEAC738255C294100878D00 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +83,9 @@
 				8A4909EB255CC2D30047F21E /* Contact.swift */,
 				8A3E7399255C30F30044EEFA /* AddContactViewController.swift */,
 				8ABB2645256CA05000095982 /* Telegramme.xcdatamodeld */,
+				8AD389BB256F4A0C0011308D /* Message.swift */,
+				8AD389B5256F49450011308D /* FriendController.swift */,
+				8AD389B8256F49930011308D /* Friend.swift */,
 				8AEAC73F255C294300878D00 /* Assets.xcassets */,
 				8AEAC741255C294300878D00 /* LaunchScreen.storyboard */,
 				8AEAC744255C294300878D00 /* Info.plist */,
@@ -162,7 +171,10 @@
 				8A4909EC255CC2D30047F21E /* Contact.swift in Sources */,
 				8AEAC737255C294100878D00 /* AppDelegate.swift in Sources */,
 				8A4909F3255CC6E60047F21E /* ShowContactViewController.swift in Sources */,
+				8AD389BC256F4A0C0011308D /* Message.swift in Sources */,
 				8ABB2647256CA05000095982 /* Telegramme.xcdatamodeld in Sources */,
+				8AD389B9256F49930011308D /* Friend.swift in Sources */,
+				8AD389B6256F49450011308D /* FriendController.swift in Sources */,
 				8AEAC739255C294100878D00 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
