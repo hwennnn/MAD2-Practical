@@ -30,6 +30,4 @@ class QRGeneratorController: UIViewController {
         QRImage.image = generator.createImage(value: QRText.text! ,size: CGSize(width: 200,height: 200))!
     }
     
-
-
 }
