@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0FC373E5F63F9CD5A25B477F /* Pods_QRCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6A77F79CB2BCC582974D666 /* Pods_QRCode.framework */; };
+		8A0058B1257BD6AF003011D9 /* QRCameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0058B0257BD6AF003011D9 /* QRCameraController.swift */; };
+		8A0058B4257BD6C9003011D9 /* QRGeneratorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0058B3257BD6C9003011D9 /* QRGeneratorController.swift */; };
 		8AF800E22575FD0A0051548E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF800E12575FD0A0051548E /* AppDelegate.swift */; };
 		8AF800E42575FD0A0051548E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF800E32575FD0A0051548E /* SceneDelegate.swift */; };
 		8AF800E62575FD0A0051548E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF800E52575FD0A0051548E /* ViewController.swift */; };
@@ -19,6 +21,8 @@
 /* Begin PBXFileReference section */
 		495482A2526249663D16366D /* Pods-QRCode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCode.release.xcconfig"; path = "Target Support Files/Pods-QRCode/Pods-QRCode.release.xcconfig"; sourceTree = "<group>"; };
 		5ABE21327BC83603C352A560 /* Pods-QRCode.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCode.debug.xcconfig"; path = "Target Support Files/Pods-QRCode/Pods-QRCode.debug.xcconfig"; sourceTree = "<group>"; };
+		8A0058B0257BD6AF003011D9 /* QRCameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCameraController.swift; sourceTree = "<group>"; };
+		8A0058B3257BD6C9003011D9 /* QRGeneratorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRGeneratorController.swift; sourceTree = "<group>"; };
 		8AF800DE2575FD0A0051548E /* QRCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AF800E12575FD0A0051548E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AF800E32575FD0A0051548E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,8 +60,25 @@
 				5ABE21327BC83603C352A560 /* Pods-QRCode.debug.xcconfig */,
 				495482A2526249663D16366D /* Pods-QRCode.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		8A0058A5257BD0EB003011D9 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				8AF800E72575FD0A0051548E /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		8A0058A6257BD0F9003011D9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8AF800E52575FD0A0051548E /* ViewController.swift */,
+				8A0058B0257BD6AF003011D9 /* QRCameraController.swift */,
+				8A0058B3257BD6C9003011D9 /* QRGeneratorController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		8AF800D52575FD0A0051548E = {
@@ -81,10 +102,10 @@
 		8AF800E02575FD0A0051548E /* QRCode */ = {
 			isa = PBXGroup;
 			children = (
+				8A0058A6257BD0F9003011D9 /* Controller */,
+				8A0058A5257BD0EB003011D9 /* Storyboard */,
 				8AF800E12575FD0A0051548E /* AppDelegate.swift */,
 				8AF800E32575FD0A0051548E /* SceneDelegate.swift */,
-				8AF800E52575FD0A0051548E /* ViewController.swift */,
-				8AF800E72575FD0A0051548E /* Main.storyboard */,
 				8AF800EA2575FD0B0051548E /* Assets.xcassets */,
 				8AF800EC2575FD0B0051548E /* LaunchScreen.storyboard */,
 				8AF800EF2575FD0B0051548E /* Info.plist */,
@@ -209,6 +230,8 @@
 				8AF800E62575FD0A0051548E /* ViewController.swift in Sources */,
 				8AF800E22575FD0A0051548E /* AppDelegate.swift in Sources */,
 				8AF800E42575FD0A0051548E /* SceneDelegate.swift in Sources */,
+				8A0058B1257BD6AF003011D9 /* QRCameraController.swift in Sources */,
+				8A0058B4257BD6C9003011D9 /* QRGeneratorController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
