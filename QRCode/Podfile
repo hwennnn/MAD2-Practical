@@ -7,5 +7,6 @@ target 'QRCode' do
 
   # Pods for QRCode
 	pod 'QRCoder', '~> 1.1'
+	pod 'QRCodeReader.swift', '~> 10.1.0'
 
 end
