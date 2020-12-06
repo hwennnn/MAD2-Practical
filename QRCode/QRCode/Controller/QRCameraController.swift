@@ -65,10 +65,6 @@ class QRCameraController: UIViewController {
         self.present(alertView, animated: true, completion: nil)
     }
     
-    func openLink(_ link : String){
-        
-    }
-
     // MARK: - QRCodeReaderViewController Delegate Methods
 
     func reader(_ reader: QRCodeReaderViewController, didScanResult result: QRCodeReaderResult) {

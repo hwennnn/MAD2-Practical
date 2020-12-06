@@ -39,6 +39,7 @@ class QRGeneratorController: UIViewController, UITextFieldDelegate {
     
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        QRImage.image = generator.createImage(value: QRText.text! ,size: CGSize(width: 200,height: 200))!
         self.view.endEditing(true)
     }
 }
