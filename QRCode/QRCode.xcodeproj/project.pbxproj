@@ -12,7 +12,6 @@
 		8A0058B4257BD6C9003011D9 /* QRGeneratorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0058B3257BD6C9003011D9 /* QRGeneratorController.swift */; };
 		8AF800E22575FD0A0051548E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF800E12575FD0A0051548E /* AppDelegate.swift */; };
 		8AF800E42575FD0A0051548E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF800E32575FD0A0051548E /* SceneDelegate.swift */; };
-		8AF800E62575FD0A0051548E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF800E52575FD0A0051548E /* ViewController.swift */; };
 		8AF800E92575FD0A0051548E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AF800E72575FD0A0051548E /* Main.storyboard */; };
 		8AF800EB2575FD0B0051548E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AF800EA2575FD0B0051548E /* Assets.xcassets */; };
 		8AF800EE2575FD0B0051548E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AF800EC2575FD0B0051548E /* LaunchScreen.storyboard */; };
@@ -26,7 +25,6 @@
 		8AF800DE2575FD0A0051548E /* QRCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AF800E12575FD0A0051548E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AF800E32575FD0A0051548E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8AF800E52575FD0A0051548E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8AF800E82575FD0A0051548E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8AF800EA2575FD0B0051548E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8AF800ED2575FD0B0051548E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -74,7 +72,6 @@
 		8A0058A6257BD0F9003011D9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				8AF800E52575FD0A0051548E /* ViewController.swift */,
 				8A0058B0257BD6AF003011D9 /* QRCameraController.swift */,
 				8A0058B3257BD6C9003011D9 /* QRGeneratorController.swift */,
 			);
@@ -227,7 +224,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AF800E62575FD0A0051548E /* ViewController.swift in Sources */,
 				8AF800E22575FD0A0051548E /* AppDelegate.swift in Sources */,
 				8AF800E42575FD0A0051548E /* SceneDelegate.swift in Sources */,
 				8A0058B1257BD6AF003011D9 /* QRCameraController.swift in Sources */,

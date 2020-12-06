@@ -11,7 +11,7 @@ import QRCoder
 import AVFoundation
 import QRCodeReader
 
-class QRGeneratorController: UIViewController {
+class QRGeneratorController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var QRImage: UIImageView!
     @IBOutlet weak var QRText: UITextField!
@@ -23,15 +23,22 @@ class QRGeneratorController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        QRText.delegate = self
+        
         //Default correction level is M
         generator.correctionLevel = .H
         QRImage.image = generator.createImage(value: QRText.text! ,size: CGSize(width: 200,height: 200))!
         
     }
     
-    
-    @IBAction func generateQR(_ sender: Any) {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        QRText.resignFirstResponder()
         QRImage.image = generator.createImage(value: QRText.text! ,size: CGSize(width: 200,height: 200))!
+        return true
     }
     
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }
