@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import QRCoder
 import AVFoundation
 import QRCodeReader
 

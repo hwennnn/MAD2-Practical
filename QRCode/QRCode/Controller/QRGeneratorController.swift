@@ -9,15 +9,12 @@ import Foundation
 import UIKit
 import QRCoder
 import AVFoundation
-import QRCodeReader
 
 class QRGeneratorController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var QRImage: UIImageView!
     @IBOutlet weak var QRText: UITextField!
     let generator = QRCodeGenerator()
-    
-    weak var delegate : QRCodeReaderViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
