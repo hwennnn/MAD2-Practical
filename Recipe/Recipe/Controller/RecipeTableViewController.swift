@@ -48,6 +48,30 @@ class RecipeTableViewContoller : UITableViewController{
         return cell
          
     }
+    
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let action = UIContextualAction(style: .normal,
+                                        title: "Edit") { [weak self] (action, view, completionHandler) in
+            self?.editHandler(indexPath.row)
+                                            completionHandler(true)
+        }
+        action.backgroundColor = .systemBlue
+        
+        return UISwipeActionsConfiguration(actions: [action])
+
+    }
+    
+    func editHandler(_ index: Int){
+        performSegue(withIdentifier: "newRecipe", sender: index)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "newRecipe", let destination = segue.destination as? AddRecipeViewContoller {
+            if let s = sender as? Int{
+                destination.recipeIndex = s
+            }
+        }
+    }
      
 }
 

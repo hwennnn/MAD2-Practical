@@ -18,16 +18,15 @@ class RecipeController: UIViewController {
         
         let entity = NSEntityDescription.entity(forEntityName: "CDRecipe", in: context)!
         
-        let contact = NSManagedObject(entity: entity, insertInto: context)
-        contact.setValue(newRecipe.name, forKey: "name")
-        contact.setValue(newRecipe.preparationTime, forKey: "preparationTime")
+        let recipe = NSManagedObject(entity: entity, insertInto: context) as! CDRecipe
+        recipe.setValue(newRecipe.name, forKey: "name")
+        recipe.setValue(newRecipe.preparationTime, forKey: "preparationTime")
         
         do{
             try context.save()
         } catch let error as NSError{
             print("Could not save. \(error), \(error.userInfo)")
         }
-        
         
         for ingredient in newRecipe.ingredient{
             AddIngredient(newRecipe, ingredient)
@@ -65,7 +64,6 @@ class RecipeController: UIViewController {
         
     }
     
-    
     // Retrieve all recipes from Core Data
     func retrieveAllRecipe() -> [Recipe] {
         var recipeList:[Recipe] = []
@@ -82,6 +80,7 @@ class RecipeController: UIViewController {
                 let preparationTime = r.preparationTime
                 var ingredients:[Ingredient] = []
                 
+                // read recipe' ingredients by casting it to set
                 for i in r.ingredients as! Set<CDIngredient>{
                     ingredients.append(Ingredient(i.name!))
                 }
@@ -95,7 +94,64 @@ class RecipeController: UIViewController {
         
         return recipeList
     }
+    
+    func updateRecipe(_ old:Recipe, _ recipe:Recipe){
+        let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "CDRecipe")
+        
+        fetchRequest.predicate = NSPredicate(format: "name = %@", old.name)
+        do {
+            let fetched = try context.fetch(fetchRequest)
+            
+            let r = fetched[0] as NSManagedObject
+            r.setValue(recipe.name, forKey: "name")
+            r.setValue(recipe.preparationTime, forKey: "preparationTime")
+            
+            do{
+                try context.save()
+            } catch let error as NSError{
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+            
+        } catch let error as NSError{
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+    }
+    
+    func updateIngredient(old:[Ingredient], new:[Ingredient]){
 
+        let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "CDRecipe")
+
+        for (index, ing) in old.enumerated(){
+            // update the existing ingredient
+            fetchRequest.predicate = NSPredicate(format: "name = %@", ing.name)
+            do {
+                let fetched = try context.fetch(fetchRequest)
+
+                let r = fetched[0] as NSManagedObject
+                r.setValue(new[index].name, forKey: "name")
+
+                do{
+                    try context.save()
+                } catch let error as NSError{
+                    print("Could not save. \(error), \(error.userInfo)")
+                }
+
+            } catch let error as NSError{
+                print("Could not fetch. \(error), \(error.userInfo)")
+            }
+        }
+
+        let diff = new.count
+
+
+    }
     
 }
 

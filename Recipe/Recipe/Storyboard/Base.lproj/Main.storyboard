@@ -50,7 +50,7 @@
                     <navigationItem key="navigationItem" title="Recipes" id="JDT-y1-eVp">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Pmr-YQ-zOM">
                             <connections>
-                                <segue destination="L1d-am-7Ld" kind="show" id="TYj-tI-zLs"/>
+                                <segue destination="L1d-am-7Ld" kind="show" identifier="newRecipe" id="TYj-tI-zLs"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -124,12 +124,21 @@
                                     <action selector="AddRecipe:" destination="L1d-am-7Ld" eventType="touchUpInside" id="Onh-vN-whk"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPI-Et-Xbx">
+                                <rect key="frame" x="182" y="655" width="51" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Update"/>
+                                <connections>
+                                    <action selector="updateRecipe:" destination="L1d-am-7Ld" eventType="touchUpInside" id="A1l-Lu-JB0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iaS-fq-ogl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="non-BG-Nx8"/>
                     <connections>
+                        <outlet property="addButton" destination="CFp-qF-OUc" id="EAp-It-mzt"/>
                         <outlet property="ingredient1" destination="XBA-R5-9KR" id="8SH-Ub-1dD"/>
                         <outlet property="ingredient2" destination="ZMA-QM-8Qg" id="erV-2s-Mno"/>
                         <outlet property="ingredient3" destination="lCG-jS-zZz" id="oN1-Lb-ayY"/>
@@ -137,6 +146,7 @@
                         <outlet property="ingredient5" destination="LQa-md-W3b" id="kf9-UK-Aod"/>
                         <outlet property="recipePrepTime" destination="gZr-tB-Won" id="G3w-aO-R0b"/>
                         <outlet property="recipeTitle" destination="erU-xW-NhS" id="NrM-hP-2Ko"/>
+                        <outlet property="updateButton" destination="vPI-Et-Xbx" id="ybo-1X-M5H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cmG-xf-we3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -22,8 +22,34 @@ class AddRecipeViewContoller : UIViewController{
     @IBOutlet weak var ingredient4: UITextField!
     @IBOutlet weak var ingredient5: UITextField!
     
+    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var updateButton: UIButton!
+    
+    var ingredients:[UITextField]?
+    
+    var recipeIndex:Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ingredients = [ingredient1,ingredient2,ingredient3,ingredient4,ingredient5]
+        
+        if let index = recipeIndex{
+            let recipe:Recipe = appDelegate.recipeList[index]
+            recipeTitle.text = recipe.name
+            recipePrepTime.text = String(recipe.preparationTime)
+            
+            for (idx,ing) in recipe.ingredient.enumerated(){
+                ingredients![idx].text = ing.name
+            }
+            
+            updateButton.isHidden = false
+            addButton.isHidden = true
+            
+        }else{
+            updateButton.isHidden = true
+            addButton.isHidden = false
+        }
         
     }
     
@@ -34,20 +60,11 @@ class AddRecipeViewContoller : UIViewController{
     @IBAction func AddRecipe(_ sender: Any) {
         if (checkTitleAndTime() && checkIngredient()){
             var ingredientList:[Ingredient] = []
-            if !ingredient1.text!.isEmpty{
-                ingredientList.append(Ingredient(ingredient1.text!))
-            }
-            if !ingredient2.text!.isEmpty{
-                ingredientList.append(Ingredient(ingredient2.text!))
-            }
-            if !ingredient3.text!.isEmpty{
-                ingredientList.append(Ingredient(ingredient3.text!))
-            }
-            if !ingredient4.text!.isEmpty{
-                ingredientList.append(Ingredient(ingredient4.text!))
-            }
-            if !ingredient5.text!.isEmpty{
-                ingredientList.append(Ingredient(ingredient5.text!))
+           
+            for i in ingredients!{
+                if !i.text!.isEmpty{
+                    ingredientList.append(Ingredient(i.text!))
+                }
             }
             
             
@@ -57,7 +74,7 @@ class AddRecipeViewContoller : UIViewController{
             // update recipeList after adding a recipe
             appDelegate.recipeList = recipeController.retrieveAllRecipe()
             
-            popSucess()
+            popSucess("added")
             
             recipeTitle.text = ""
             recipePrepTime.text = ""
@@ -101,11 +118,31 @@ class AddRecipeViewContoller : UIViewController{
         return isValid
     }
     
-    func popSucess(){
-        let alertView = UIAlertController(title: "Data Added", message: "A recipe is added to database.", preferredStyle: UIAlertController.Style.alert)
+    func popSucess(_ action:String){
+        let alertView = UIAlertController(title: "Data \(action)", message: "The recipe is \(action) to database.", preferredStyle: UIAlertController.Style.alert)
                 
         alertView.addAction(UIAlertAction(title: "Done",style: UIAlertAction.Style.default, handler: { _ in }))
         
         self.present(alertView, animated: true, completion: nil)
+    }
+    
+    @IBAction func updateRecipe(_ sender: Any) {
+        if checkTitleAndTime() && checkIngredient(){
+            var ingredientList:[Ingredient] = []
+           
+            for i in ingredients!{
+                if !i.text!.isEmpty{
+                    ingredientList.append(Ingredient(i.text!))
+                }
+            }
+            
+            let old:Recipe = appDelegate.recipeList[recipeIndex!]
+            let recipe:Recipe = Recipe(recipeTitle.text!, Int16(recipePrepTime.text!)!, ingredientList)
+            
+            recipeController.updateRecipe(old, recipe)
+            appDelegate.recipeList = recipeController.retrieveAllRecipe()
+            
+            popSucess("updated")
+        }
     }
 }
