@@ -121,36 +121,64 @@ class RecipeController: UIViewController {
         
     }
     
-    func updateIngredient(old:[Ingredient], new:[Ingredient]){
-
+    func deleteRecipeRelationship(_ recipe:Recipe){
         let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<CDRecipe>(entityName: "CDRecipe")
+        
+        fetchRequest.predicate = NSPredicate(format: "name = %@", recipe.name)
+        do {
+            let fetched = try context.fetch(fetchRequest)
+            
+            let r = fetched[0] as CDRecipe
+            let ing:NSSet = r.ingredients!
+            r.removeFromIngredients(ing)
 
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "CDRecipe")
-
-        for (index, ing) in old.enumerated(){
-            // update the existing ingredient
+            do{
+                try context.save()
+            } catch let error as NSError{
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+            
+        } catch let error as NSError{
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
+    
+    func deleteIngredients(_ ingredients:[Ingredient]){
+        for ing in ingredients{
+            let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "CDIngredient")
+            
             fetchRequest.predicate = NSPredicate(format: "name = %@", ing.name)
+            
             do {
                 let fetched = try context.fetch(fetchRequest)
-
-                let r = fetched[0] as NSManagedObject
-                r.setValue(new[index].name, forKey: "name")
-
+            
+                let f = fetched[0] as NSManagedObject
+                context.delete(f)
+                
                 do{
                     try context.save()
                 } catch let error as NSError{
                     print("Could not save. \(error), \(error.userInfo)")
                 }
-
+                
             } catch let error as NSError{
                 print("Could not fetch. \(error), \(error.userInfo)")
             }
         }
-
-        let diff = new.count
-
-
+    }
+    
+    func updateIngredient(_ recipe:Recipe, _ ingredients:[Ingredient]){
+        deleteRecipeRelationship(recipe)
+        deleteIngredients(ingredients)
+        for ing in recipe.ingredient{
+            AddIngredient(recipe, ing)
+        }
     }
     
 }

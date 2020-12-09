@@ -140,6 +140,8 @@ class AddRecipeViewContoller : UIViewController{
             let recipe:Recipe = Recipe(recipeTitle.text!, Int16(recipePrepTime.text!)!, ingredientList)
             
             recipeController.updateRecipe(old, recipe)
+            recipeController.updateIngredient(recipe, old.ingredient)
+            // TODO: updateIngredients
             appDelegate.recipeList = recipeController.retrieveAllRecipe()
             
             popSucess("updated")
