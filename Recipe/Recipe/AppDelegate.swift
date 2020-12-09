@@ -11,7 +11,11 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
+    var recipeList:[Recipe] = []
+    let recipeController = RecipeController()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        self.recipeList = recipeController.retrieveAllRecipe()
         // Override point for customization after application launch.
         return true
     }

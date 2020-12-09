@@ -10,12 +10,11 @@ import UIKit
 
 class RecipeTableViewContoller : UITableViewController{
     
-    var recipeList:[Recipe] = []
-    let recipeController = RecipeController()
+    let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.recipeList = recipeController.retrieveAllRecipe()
+        
         self.tableView.reloadData() //refresh data
     }
     
@@ -29,13 +28,13 @@ class RecipeTableViewContoller : UITableViewController{
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recipeList.count
+        return appDelegate.recipeList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
-        let recipe = recipeList[indexPath.row]
+        let recipe = appDelegate.recipeList[indexPath.row]
 
         cell.textLabel!.text = "\(recipe.name) (\(recipe.preparationTime) mins)"
         

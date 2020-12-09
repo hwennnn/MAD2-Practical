@@ -10,6 +10,7 @@ import UIKit
 
 class AddRecipeViewContoller : UIViewController{
     
+    let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
     let recipeController = RecipeController()
     
     @IBOutlet weak var recipeTitle: UITextField!
@@ -52,6 +53,9 @@ class AddRecipeViewContoller : UIViewController{
             
             let recipe:Recipe = Recipe(recipeTitle.text!, Int16(recipePrepTime.text!)!, ingredientList)
             recipeController.AddRecipe(newRecipe: recipe)
+            
+            // update recipeList after adding a recipe
+            appDelegate.recipeList = recipeController.retrieveAllRecipe()
             
             popSucess()
             
