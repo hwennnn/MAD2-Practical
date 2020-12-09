@@ -51,7 +51,6 @@ class RecipeController: UIViewController {
         do{
             let CDRecipe = try context.fetch(fetchRequest)
             let r = CDRecipe[0] as! CDRecipe
-            
             ingredient.addToRecipes(r)
             
             do{
@@ -65,25 +64,28 @@ class RecipeController: UIViewController {
     }
     
     
-    // Retrieve all contact from Core Data
+    // Retrieve all recipes from Core Data
     func retrieveAllRecipe() -> [Recipe] {
         var recipeList:[Recipe] = []
-        var fetchedList:[NSManagedObject] = []
+        var recipes:[CDRecipe] = []
         let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "CDRecipe")
+    
+        let fetchRequest = NSFetchRequest<CDRecipe>(entityName: "CDRecipe")
         do {
-            fetchedList = try context.fetch(fetchRequest)
-            print(fetchedList.count)
-            for c in fetchedList{
-                let name = c.value(forKey: "name") as? String
-                let preparationTime = c.value(forKey: "preparationTime") as? Int16
-                let ingredient = c.value(forKey: "ingredients") 
+            recipes = try context.fetch(fetchRequest)
+
+            for r in recipes{
+                let name = r.name
+                let preparationTime = r.preparationTime
+                var ingredients:[Ingredient] = []
                 
-                print(name!, preparationTime!, ingredient)
-//                let recipe = Recipe(name!, preparationTime!, ingredient!)
-//                recipeList.append(recipe)
+                for i in r.ingredients as! Set<CDIngredient>{
+                    ingredients.append(Ingredient(i.name!))
+                }
+
+                let recipe = Recipe(name!, preparationTime, ingredients)
+                recipeList.append(recipe)
             }
         } catch let error as NSError{
             print("Could not fetch. \(error), \(error.userInfo)")
@@ -91,6 +93,7 @@ class RecipeController: UIViewController {
         
         return recipeList
     }
+
     
 }
 

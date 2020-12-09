@@ -25,21 +25,26 @@ class RecipeTableViewContoller : UITableViewController{
     
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return recipeList.count
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return recipeList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
         let recipe = recipeList[indexPath.row]
-        cell.textLabel!.text = "\(recipe.name) \(recipe.preparationTime)"
-//        var ingredients:String = ""
-//
-//        cell.detailTextLabel!.text. =
+
+        cell.textLabel!.text = "\(recipe.name) (\(recipe.preparationTime) mins)"
+        
+        var ingredientsText:String = "Ingredients:"
+        for i in recipe.ingredient{
+            ingredientsText += " [\(i.name)]"
+        }
+
+        cell.detailTextLabel!.text = ingredientsText
         
         return cell
          
