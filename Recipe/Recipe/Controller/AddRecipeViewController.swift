@@ -83,6 +83,7 @@ class AddRecipeViewContoller : UIViewController{
             ingredient3.text = ""
             ingredient4.text = ""
             ingredient5.text = ""
+            
         }
     }
     
@@ -121,9 +122,13 @@ class AddRecipeViewContoller : UIViewController{
     func popSucess(_ action:String){
         let alertView = UIAlertController(title: "Data \(action)", message: "The recipe is \(action) to database.", preferredStyle: UIAlertController.Style.alert)
                 
-        alertView.addAction(UIAlertAction(title: "Done",style: UIAlertAction.Style.default, handler: { _ in }))
+        alertView.addAction(UIAlertAction(title: "Done",style: UIAlertAction.Style.default, handler: { _ in self.popVC()}))
         
         self.present(alertView, animated: true, completion: nil)
+    }
+    
+    func popVC(){
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func updateRecipe(_ sender: Any) {
