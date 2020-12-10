@@ -174,10 +174,35 @@ class RecipeController: UIViewController {
     }
     
     func updateIngredient(_ recipe:Recipe, _ ingredients:[Ingredient]){
-        deleteRecipeRelationship(recipe)
-        deleteIngredients(ingredients)
-        for ing in recipe.ingredient{
+        deleteRecipeRelationship(recipe) // delete relationships between recipe and ingredients
+        deleteIngredients(ingredients) // delete old ingredients
+        for ing in recipe.ingredient{ // add new ingredients
             AddIngredient(recipe, ing)
+        }
+    }
+    
+    func deleteRecipe(_ recipe:Recipe){
+        let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "CDRecipe")
+        
+        fetchRequest.predicate = NSPredicate(format: "name = %@", recipe.name)
+        
+        do {
+            let fetched = try context.fetch(fetchRequest)
+        
+            let f = fetched[0] as NSManagedObject
+            context.delete(f)
+            
+            do{
+                try context.save()
+            } catch let error as NSError{
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+            
+        } catch let error as NSError{
+            print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
     

@@ -11,11 +11,13 @@ import UIKit
 class RecipeTableViewContoller : UITableViewController{
     
     let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
+    let recipeController = RecipeController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.reloadData() //refresh data
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -59,6 +61,22 @@ class RecipeTableViewContoller : UITableViewController{
         
         return UISwipeActionsConfiguration(actions: [action])
 
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            
+            let recipe = self.appDelegate.recipeList[indexPath.row]
+            
+            recipeController.deleteRecipeRelationship(recipe)
+            recipeController.deleteRecipe(recipe)
+            recipeController.deleteIngredients(recipe.ingredient)
+            
+            // refresh data
+            appDelegate.recipeList = recipeController.retrieveAllRecipe()
+        }
+        
+        self.tableView.reloadData()
     }
     
     func editHandler(_ index: Int){

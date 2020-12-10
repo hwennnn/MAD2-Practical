@@ -141,7 +141,7 @@ class AddRecipeViewContoller : UIViewController{
             
             recipeController.updateRecipe(old, recipe)
             recipeController.updateIngredient(recipe, old.ingredient)
-            // TODO: updateIngredients
+            
             appDelegate.recipeList = recipeController.retrieveAllRecipe()
             
             popSucess("updated")
