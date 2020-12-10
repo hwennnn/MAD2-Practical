@@ -67,15 +67,30 @@ class RecipeTableViewContoller : UITableViewController{
         if editingStyle == UITableViewCell.EditingStyle.delete {
             
             let recipe = self.appDelegate.recipeList[indexPath.row]
-            
-            recipeController.deleteRecipeRelationship(recipe)
-            recipeController.deleteRecipe(recipe)
-            recipeController.deleteIngredients(recipe.ingredient)
-            
-            // refresh data
-            appDelegate.recipeList = recipeController.retrieveAllRecipe()
+
+            popAlert(recipe)
         }
         
+        self.tableView.reloadData()
+    }
+    
+    func popAlert(_ recipe:Recipe){
+        let alertView = UIAlertController(title: "Delete Recipe", message: "Are you sure you want to delete this recipe?", preferredStyle: UIAlertController.Style.alert)
+        
+        alertView.addAction(UIAlertAction(title: "No",style: UIAlertAction.Style.default, handler: { _ in }))
+                
+        alertView.addAction(UIAlertAction(title: "Yes",style: UIAlertAction.Style.default, handler: { _ in self.deleteRecipe(recipe) }))
+        
+        self.present(alertView, animated: true, completion: nil)
+    }
+    
+    func deleteRecipe(_ recipe:Recipe){
+        recipeController.deleteRecipeRelationship(recipe)
+        recipeController.deleteRecipe(recipe)
+        recipeController.deleteIngredients(recipe.ingredient)
+        
+        // refresh data
+        appDelegate.recipeList = recipeController.retrieveAllRecipe()
         self.tableView.reloadData()
     }
     
